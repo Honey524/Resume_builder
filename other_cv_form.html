@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>General CV Form with Customizable Options</title>
+<style>
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #333;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+            z-index: -1;
+        }
+
+        .go-back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: thistle; /* Blue */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px; 
+            transition: background-color 0.3s ease; 
+            position: relative; 
+            z-index: 1;
+        }
+
+        .go-back-button:hover {
+            background-color: blue;
+        }
+
+        form {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: grey;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+	    color:white;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        textarea,
+        input[type="file"] { 
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:hover,
+        input[type="email"]:hover,
+        input[type="tel"]:hover,
+        input[type="url"]:hover,
+        textarea:hover,
+        input[type="file"]:hover { 
+            border-color: #66afe9; 
+            outline: 0;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="url"]:focus,
+        textarea:focus,
+        input[type="file"]:focus { 
+            border-color: #66afe9; 
+            outline: 0;
+            box-shadow: 0 0 5px rgba(102, 175, 233, .5);
+        }
+
+
+        .error {
+            color: thistle;
+            font-size: 0.8em;
+            margin-top: -10px;
+            margin-bottom: 5px;
+            display: none; 
+        }
+
+        input:invalid + .error,
+        textarea:invalid + .error {
+            display: block; 
+        }
+
+        button[type="submit"] {
+            background-color: thistle;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: green;
+        }
+
+    </style>
+
+    <style>
+        .dynamic-field {
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        .dynamic-field label {
+            display: block;
+            font-weight: normal; 
+            margin-bottom: 2px;
+        }
+
+        .dynamic-field input[type="text"],
+        .dynamic-field textarea {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            box-sizing: border-box;
+            font-size: 0.9em; 
+        }
+
+        .remove-field {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8em;
+        }
+
+        .add-field {
+            margin-bottom: 15px;
+	    background-color: thistle;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+	.add-field:hover{
+	    background:gold;
+	}
+    </style>
+</head>
+<body>
+<a href="front.html.html" class="go-back-button">Go Back</a>
+<form id="generalCVForm">
+<h2>General CV Form</h2>
+
+<label for="profilePicture">Profile Picture:</label>
+<input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+<div class="error">Please upload a profile picture.</div>
+
+<label for="fullName">Full Name:</label>
+<input type="text" id="fullName" name="fullName" pattern="[A-Za-z\s]+" required>
+<div class="error">Please enter only letters and spaces.</div>
+
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}" required>
+<div class="error">Please enter a valid email address.</div>
+
+<label for="phone">Phone Number:</label>
+<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+<div class="error">Please enter a 10-digit phone number (numbers only).</div>
+
+<label for="linkedIn">LinkedIn Profile:</label>
+<input type="url" id="linkedIn" name="linkedIn" pattern="https:\/\/.*" >
+<div class="error">Please enter a valid LinkedIn URL (including https://).</div>
+
+<label for="objective">Career Objective:</label>
+<textarea id="objective" name="objective" rows="3" required></textarea>
+<div class="error">Please enter your career objective.</div>
+
+<label for="summary">Summary/About Me:</label>
+<textarea id="summary" name="summary" rows="4" required></textarea>
+<div class="error">This field is required.</div>
+
+<div id="dynamicFieldsContainer"></div>
+<button type="button" id="addFieldButton" class="add-field">Add Section</button>
+<button type="submit">Create CV</button>
+</form>
+
+<script>
+        const form = document.getElementById("generalCVForm");
+        const dynamicFieldsContainer = document.getElementById("dynamicFieldsContainer");
+        const addFieldButton = document.getElementById("addFieldButton");
+
+
+         function populateForm() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            for (const [key, value] of urlParams.entries()) {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (element.type === "text" || element.type === "email" || element.type === "tel" || element.type === "url" || element.tagName.toLowerCase() === "textarea") {
+                        element.value = value;
+                    }
+                }
+            }
+        }
+        window.addEventListener('load', populateForm);
+
+
+        addFieldButton.addEventListener("click", function() {
+            const fieldDiv = document.createElement("div");
+            fieldDiv.classList.add("dynamic-field");
+
+            const label = document.createElement("label");
+            label.textContent = "Section Title:";
+            const titleInput = document.createElement("input");
+            titleInput.type = "text";
+            titleInput.name = "sectionTitle[]"; 
+            titleInput.required = true;
+
+            const contentLabel = document.createElement("label");
+            contentLabel.textContent = "Section Content:";
+            const contentTextarea = document.createElement("textarea");
+            contentTextarea.name = "sectionContent[]"; 
+            contentTextarea.rows = 4;
+            contentTextarea.required = true;
+
+            const removeButton = document.createElement("button");
+            removeButton.type = "button";
+            removeButton.textContent = "Remove";
+            removeButton.classList.add("remove-field");
+            removeButton.addEventListener("click", function() {
+                fieldDiv.remove();
+            });
+
+            fieldDiv.appendChild(label);
+            fieldDiv.appendChild(titleInput);
+            fieldDiv.appendChild(contentLabel);
+            fieldDiv.appendChild(contentTextarea);
+            fieldDiv.appendChild(removeButton);
+
+            dynamicFieldsContainer.appendChild(fieldDiv);
+        });
+
+        form.addEventListener("submit", function(event) {
+           event.preventDefault(); 
+
+            if (!form.checkValidity()) {
+                form.reportValidity(); 
+                return; // Stop submission if invalid
+            }
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+             // Handle dynamically added sections
+            const sectionTitles = formData.getAll('sectionTitle[]');
+            const sectionContents = formData.getAll('sectionContent[]');
+
+            data.sections = []; // Create an array to hold section data
+            for (let i = 0; i < sectionTitles.length; i++) {
+                data.sections.push({
+                    title: sectionTitles[i],
+                    content: sectionContents[i]
+                });
+            }
+
+
+            const profilePictureFile = formData.get('profilePicture'); 
+
+            if (profilePictureFile && profilePictureFile.size > 0) { 
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    data.profilePicture = e.target.result; // Store the image data URL
+                    window.location.href = "preview_cv_o.html?data=" + encodeURIComponent(JSON.stringify(data));
+                }
+
+                reader.readAsDataURL(profilePictureFile); // Read the file as a data URL
+            } else {
+                data.profilePicture = null; // Set to null if no file selected, or send a default image URL
+                window.location.href = "preview_cv_o.html?data=" + encodeURIComponent(JSON.stringify(data));
+            }
+        });
+    </script>
+</body>
+</html>

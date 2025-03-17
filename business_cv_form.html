@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business CV Form</title>
+<style>
+	body {
+	   font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background:white;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #333;
+            position: relative;
+            overflow-x: hidden; /* Prevent horizontal scrollbar */
+
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+            z-index: -1;
+        }
+
+        .go-back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color:thistle; /* Blue */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px; /* Add some margin for spacing */
+            transition: background-color 0.3s ease; /* Smooth hover effect */
+            position: relative; /* Ensure button is positioned correctly */
+            z-index: 1; /* Ensure button is above the background */
+        }
+
+        .go-back-button:hover {
+            background-color: #2980b9; /* Darker blue */
+        }
+
+
+        form {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background: linear-gradient(to top,grey,grey);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Added transition */
+        }
+
+        form:hover {
+            transform: translateY(-5px); /* Slight hover effect */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+	    color:white;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        textarea,
+        input[type="file"] {  
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:hover,
+        input[type="email"]:hover,
+        input[type="tel"]:hover,
+        input[type="url"]:hover,
+        textarea:hover,
+        input[type="file"]:hover {
+            border-color: #66afe9; 
+            outline: 0;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="url"]:focus,
+        textarea:focus,
+        input[type="file"]:focus { 
+            border-color: #66afe9; 
+            outline: 0;
+            box-shadow: 0 0 5px rgba(102, 175, 233, .5);
+        }
+
+
+        .error {
+            color: thistle;
+            font-size: 0.8em;
+            margin-top: -10px;
+            margin-bottom: 5px;
+            display: none; 
+        }
+
+        input:invalid + .error,
+        textarea:invalid + .error {
+            display: block; 
+        }
+
+        button[type="submit"] {
+            background-color: thistle;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: green;
+        }
+
+         @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        form {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+
+        .qualification-container {
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        .add-more-button {
+            background-color: #5cb85c;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .add-more-button:hover {
+            background-color: #449d44;
+        }
+
+        .remove-button {
+            background-color: #d9534f;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        .remove-button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+<a href="front.html.html" class="go-back-button">Go Back</a>
+
+<form id="businessCVForm">
+<h2>Business CV Form</h2>
+
+<label for="profilePicture">Profile Picture:</label>
+<input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+<div class="error">Please upload a profile picture.</div>
+
+
+<label for="fullName">Full Name:</label>
+<input type="text" id="fullName" name="fullName" pattern="[A-Za-z\s]+" required>
+<div class="error">Please enter only letters and spaces.</div>
+
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}" required>
+<div class="error">Please enter a valid email address.</div>
+
+<label for="phone">Phone Number:</label>
+<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+<div class="error">Please enter a 10-digit phone number (numbers only).</div>
+
+<label for="linkedIn">LinkedIn Profile:</label>
+<input type="url" id="linkedIn" name="linkedIn" pattern="https:\/\/.*" >
+<div class="error">Please enter a valid LinkedIn URL.</div>
+
+<label for="jobTitle">Desired Job Title:</label>
+<input type="text" id="jobTitle" name="jobTitle" required>
+<div class="error">This field is required.</div>
+
+<label for="yearsExperience">Years of Experience:</label>
+<input type="text" id="yearsExperience" name="yearsExperience" pattern="[0-9]+" required>
+<div class="error">Please enter a number for years of experience.</div>
+
+<label for="objective">Career Objective:</label>
+<textarea id="objective" name="objective" rows="3" required></textarea>
+<div class="error">Please enter your career objective.</div>
+
+<div id="keyAchievementsSection">
+<label>Key Achievements:</label>
+<div class="qualification-container">
+<textarea name="keyAchievements[]" rows="3"></textarea>
+<div class="error">Please enter your key achievements.</div>
+</div>
+<button type="button" class="add-more-button" onclick="addKeyAchievement()">Add More Achievement</button>
+</div>
+
+<div id="professionalAffiliationsSection">
+<label>Professional Affiliations:</label>
+<div class="qualification-container">
+<textarea name="professionalAffiliations[]" rows="2"></textarea>
+<div class="error">List any professional affiliations here.</div>
+</div>
+<button type="button" class="add-more-button" onclick="addProfessionalAffiliation()">Add More Affiliation</button>
+</div>
+
+<label for="skills">Key Skills (separate by commas):</label>
+<textarea id="skills" name="skills" rows="3" required></textarea>
+<div class="error">This field is required.</div>
+
+<label for="summary">Professional Summary:</label>
+<textarea id="summary" name="summary" rows="4" required></textarea>
+<div class="error">This field is required.</div>
+
+<button type="submit">Create CV</button>
+</form>
+
+<script>
+const form = document.getElementById("businessCVForm");
+
+function populateForm() {
+	const urlParams = new URLSearchParams(window.location.search);
+
+  for (const [key, value] of urlParams.entries()) {
+      const element = document.getElementById(key);
+       if (element) {
+       if (element.type === "text" || element.type === "email" || element.type === "tel" || element.type === "url" || 	element.tagName.toLowerCase() === "textarea") {
+                        element.value = value;
+                    }
+                }
+            }
+        }
+
+        window.addEventListener('load', populateForm);
+
+        function addKeyAchievement() {
+            addQualification("keyAchievements", "Key Achievements");
+        }
+
+        function addProfessionalAffiliation() {
+            addQualification("professionalAffiliations", "Professional Affiliation");
+        }
+
+
+        function addQualification(sectionId, labelText) {
+            const section = document.getElementById(sectionId + "Section");
+            const container = document.createElement("div");
+            container.classList.add("qualification-container");
+
+            const textarea = document.createElement("textarea");
+            textarea.name = sectionId + "[]";
+            textarea.rows = 3;
+           
+            const errorDiv = document.createElement("div");
+            errorDiv.classList.add("error");
+            errorDiv.textContent = `Please enter your ${labelText.toLowerCase()}.`;
+
+            const removeButton = document.createElement("button");
+            removeButton.type = "button";
+            removeButton.classList.add("remove-button");
+            removeButton.textContent = "Remove";
+            removeButton.onclick = function() {
+                section.removeChild(container);
+            };
+
+            container.appendChild(textarea);
+            container.appendChild(errorDiv);
+            container.appendChild(removeButton);
+            section.insertBefore(container, section.querySelector(".add-more-button"));
+        }
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default submission to handle image
+
+            if (!form.checkValidity()) {
+                form.reportValidity(); // Trigger HTML5 validation messages
+                return; // Stop submission if invalid
+            }
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            const keyAchievements = formData.getAll('keyAchievements[]');
+            data.keyAchievements = keyAchievements;
+
+            const professionalAffiliations = formData.getAll('professionalAffiliations[]');
+            data.professionalAffiliations = professionalAffiliations;
+
+
+            const profilePictureFile = formData.get('profilePicture'); // Get the file
+
+            if (profilePictureFile && profilePictureFile.size > 0) { // Check if a file was selected
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    data.profilePicture = e.target.result; // Store the image data URL
+                    window.location.href = "preview_cv.html?data=" + encodeURIComponent(JSON.stringify(data));
+                }
+
+                reader.readAsDataURL(profilePictureFile); // Read the file as a data URL
+            } else {
+                data.profilePicture = null; // Set to null if no file selected, or send a default image URL
+                window.location.href = "preview_cv.html?data=" + encodeURIComponent(JSON.stringify(data));
+            }
+        });
+    </script>
+
+</body>
+</html>

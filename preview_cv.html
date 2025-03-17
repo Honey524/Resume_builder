@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Preview</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 21cm;
+            min-height: 29.7cm;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            border-radius: 5px;
+            overflow: hidden;
+            page-break-inside: avoid;
+            box-sizing: border-box;
+        }
+
+        .left-section {
+            background-color: #343a40;
+            color: #fff;
+            padding: 15px;
+            width: 35%;
+            flex-shrink: 0;
+            box-sizing: border-box;
+        }
+
+        .profile-img {
+            width: 90%;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info, .skills {
+            margin-bottom: 15px;
+        }
+
+        .contact-info h3, .skills h3 {
+            border-bottom: 2px solid #fff;
+            padding-bottom: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .contact-info p, .skills ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .contact-info p {
+            margin-bottom: 4px;
+            word-break: break-word;
+            line-height: 1.3;
+            font-size: 1.1em;
+            text-align: justify;
+        }
+
+        .skills ul {
+          padding-left: 10px;
+        }
+
+        .skills li {
+            margin-bottom: 4px;
+            font-size: 1.1em;
+            word-break: break-word;
+             overflow-wrap: break-word;
+        }
+
+        .right-section {
+            padding: 15px;
+            width: 65%;
+            box-sizing: border-box;
+        }
+
+        .section-title {
+            font-size: 1.6em;
+            border-bottom: 4px solid #343a40;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            font-weight: bolder;
+        }
+
+        .section-divider {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        .right-section p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            text-align: justify;
+        }
+
+        .right-section > div:last-child {
+            margin-bottom: 0;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 95%;
+            }
+
+            .left-section, .right-section {
+                width: 100%;
+            }
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                background-color: #fff !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                font-size: 11pt !important;
+                line-height: 1.3 !important;
+            }
+
+            .container {
+                width: 21cm !important;
+                min-height: 29.7cm !important;
+                max-height: 29.7cm !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                display: flex !important;
+                border-radius: 5px !important;
+                overflow: hidden !important;
+                page-break-inside: avoid !important;
+                flex-direction: row !important;
+                box-sizing: border-box !important;
+            }
+
+            .left-section {
+                background-color: #343a40 !important;
+                color: #fff !important;
+                padding: 15px !important;
+                width: 35% !important;
+                flex-shrink: 0 !important;
+                box-sizing: border-box !important;
+            }
+
+            .profile-img {
+                width: 90% !important;
+                border-radius: 50% !important;
+                margin-bottom: 15px !important;
+                display: block !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            .contact-info, .skills {
+                margin-bottom: 15px !important;
+            }
+
+            .contact-info h3, .skills h3 {
+                border-bottom: 2px solid #fff !important;
+                padding-bottom: 5px !important;
+                font-size: 1.2em !important;
+                font-weight: bold !important;
+            }
+
+            .contact-info p {
+                margin-bottom: 4px !important;
+                word-break: break-word !important;
+                line-height: 1.3 !important;
+                font-size: 1.1em !important;
+                text-align: justify !important;
+            }
+
+            .skills ul {
+              padding-left: 10px !important;
+            }
+
+            .skills li {
+                margin-bottom: 4px !important;
+                font-size: 1.1em !important;
+                word-break: break-word !important;
+                 overflow-wrap: break-word !important;
+            }
+
+            .right-section {
+                padding: 15px !important;
+                width: 65% !important;
+                box-sizing: border-box !important;
+                page-break-inside: avoid !important;
+            }
+
+            .section-title {
+                font-size: 1.6em !important;
+                border-bottom: 4px solid #343a40 !important;
+                margin-bottom: 15px !important;
+                padding-bottom: 5px !important;
+                font-weight: bolder !important;
+            }
+
+            .section-divider {
+                border-bottom: 1px solid #ccc !important;
+                margin-bottom: 15px !important;
+            }
+
+            .right-section p {
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                line-height: 1.5 !important;
+                margin-bottom: 12px !important;
+                font-size: 1.1em !important;
+                text-align: justify !important;
+            }
+
+            .download-btn {
+                display: none !important;
+            }
+        }
+
+        .download-btn {
+            background-color: #5cb85c;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            margin: 15px auto;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color: #4cae4c;
+        }
+
+        .dynamic-section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <img id="previewProfilePicture" src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-img">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p id="previewFullName"><strong>Name:</strong></p>
+                <p id="previewEmail"><strong>Email:</strong></p>
+                <p id="previewPhone"><strong>Phone:</strong></p>
+                <p id="previewLinkedIn"><strong>LinkedIn:</strong></p>
+            </div>
+            <div class="skills">
+                <h3>Skills</h3>
+                <ul id="previewSkills">
+                </ul>
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="objective">
+                <h2 class="section-title">Career Objective</h2>
+                <p id="previewObjective"></p>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="summary">
+                <h2 class="section-title">Professional Summary</h2>
+                <p id="previewSummary"></p>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="achievements">
+                <h2 class="section-title">Key Achievements</h2>
+                <ul id="previewAchievements">
+                </ul>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="affiliations">
+                <h2 class="section-title">Professional Affiliations</h2>
+                <ul id="previewAffiliations">
+                </ul>
+                <div class="section-divider"></div>
+            </div>
+        </div>
+    </div>
+    <button class="download-btn" onclick="window.print()">Download as PDF</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const data = JSON.parse(decodeURIComponent(urlParams.get('data')));
+
+            function setTextContent(elementId, value) {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.textContent = value || '';
+                }
+            }
+
+            function setInnerHTML(elementId, value) {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.innerHTML = value || '';
+                }
+            }
+
+            const profilePicture = document.getElementById('previewProfilePicture');
+            if (data.profilePicture) {
+                profilePicture.src = data.profilePicture;
+            } else {
+                profilePicture.src = 'https://via.placeholder.com/150';
+            }
+
+            setInnerHTML('previewFullName', `<strong>Name:</strong> ${data.fullName || ''}`);
+            setInnerHTML('previewEmail', `<strong>Email:</strong> ${data.email || ''}`);
+            setInnerHTML('previewPhone', `<strong>Phone:</strong> ${data.phone || ''}`);
+            let linkedInLink = data.linkedIn ? `<a href="${data.linkedIn}" target="_blank">${data.linkedIn}</a>` : '';
+            setInnerHTML('previewLinkedIn', `<strong>LinkedIn:</strong> ${linkedInLink}`);
+
+            const skillsList = document.getElementById('previewSkills');
+            skillsList.innerHTML = '';
+            if (data.skills) {
+                const skillsArray = data.skills.split(',').map(skill => skill.trim());
+                skillsArray.forEach(skill => {
+                    let li = document.createElement('li');
+                    li.textContent = skill;
+                    li.style.wordBreak = 'break-word';
+                    skillsList.appendChild(li);
+                });
+            }
+
+            setTextContent('previewSummary', data.summary || '');
+            setTextContent('previewObjective', data.objective || '');
+
+             const achievementsList = document.getElementById('previewAchievements');
+            achievementsList.innerHTML = '';
+            if (data.keyAchievements && Array.isArray(data.keyAchievements)) {
+                data.keyAchievements.forEach(achievement => {
+                    if (achievement) {
+                        let li = document.createElement('li');
+                        li.textContent = achievement;
+                        achievementsList.appendChild(li);
+                    }
+                });
+            }
+
+            const affiliationsList = document.getElementById('previewAffiliations');
+            affiliationsList.innerHTML = '';
+            if (data.professionalAffiliations && Array.isArray(data.professionalAffiliations)) {
+                data.professionalAffiliations.forEach(affiliation => {
+                    if (affiliation) {
+                        let li = document.createElement('li');
+                        li.textContent = affiliation;
+                        affiliationsList.appendChild(li);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
